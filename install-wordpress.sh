@@ -78,10 +78,10 @@ mysql -uroot -proot -e "CREATE DATABASE $db_name"
 mysql -uroot -proot -e "GRANT ALL PRIVILEGES ON $db_name.* to '"$db_user"'@'localhost' IDENTIFIED BY '"$db_password"';"
 
 # Populate the database
-php -r "
-include '"$directory"/wp-admin/install.php';
-wp_install('"$blog_title"', 'admin', '"$admin_email"', 1, '', '"$admin_pass"');
-" > /dev/null 2>&1
+# php -r "
+# include '"$directory"/wp-admin/install.php';
+# wp_install('"$blog_title"', 'admin', '"$admin_email"', 1, '', '"$admin_pass"');
+# " > /dev/null 2>&1
 
 # Erase temp file
 rm -rf /tmp/latest-pt_BR.tar.gz
@@ -89,5 +89,5 @@ rm -rf /tmp/latest-pt_BR.tar.gz
 # if defined open the url
 if [ $url ]
 then
-	open $url
+	open $url'wp-admin/install.php'
 fi
